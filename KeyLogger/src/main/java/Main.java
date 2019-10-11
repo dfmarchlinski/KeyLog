@@ -3,8 +3,6 @@ import org.jnativehook.NativeHookException;
 
 public class Main {
     public static void main(String[] args) {
-        String s = String.format("%x",(int)(Math.random()*2147483647));
-        System.out.println(s);
         try {
             GlobalScreen.registerNativeHook();
         }
