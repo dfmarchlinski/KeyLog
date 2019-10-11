@@ -25,12 +25,16 @@
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
             <version>6.10.0</version>
-
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
             <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.1stleg</groupId>
+            <artifactId>jnativehook</artifactId>
+            <version>2.1.0</version>
         </dependency>
     </dependencies>
 
