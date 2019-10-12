@@ -29,6 +29,11 @@ public class Logger implements NativeKeyListener {
     }
 
 
-    public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {}
-    public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {}
+    public void nativeKeyTyped(NativeKeyEvent e) {}
+
+    public void nativeKeyReleased(NativeKeyEvent e) {
+        if(e.getKeyCode() == 42) {
+            log += "Shift Released";
+        }
+    }
 }
