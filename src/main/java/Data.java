@@ -16,12 +16,13 @@ import java.util.concurrent.ExecutionException;
 
 class Data {
 
-    Data(String log) throws InterruptedException, ExecutionException, IOException {
+    Data(String log) throws IOException, ExecutionException, InterruptedException {
         Upload(log);
     }
 
     private static void Upload(String log) throws IOException, ExecutionException, InterruptedException {
 
+        // Access Firebase database
         InputStream serviceAccount = new FileInputStream("./ServiceAccountKey.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
         FirebaseOptions options = new FirebaseOptions.Builder()
@@ -31,10 +32,11 @@ class Data {
 
         Firestore db = FirestoreClient.getFirestore();
 
+        // Upload log to firebase
         DocumentReference ref = db.collection("user").document("data");
         Map<String, String> data = new HashMap<>();
         data.put("log", log);
-        String hex = String.format("%x",(int)(Math.random()*2147483647));
+        String hex = String.format("%x", (int) (Math.random() * 2147483647));
         ApiFuture<WriteResult> result = ref.update(hex, data);
         System.out.println("Update time : " + result.get().getUpdateTime());
     }
