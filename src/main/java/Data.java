@@ -27,7 +27,6 @@ class Data {
                 .setCredentials(GoogleCredentials.fromStream(new FileInputStream("Key.json")))
                 .build();
         FirebaseApp.initializeApp(options);
-
         Firestore db = FirestoreClient.getFirestore();
 
         // Upload log to database
