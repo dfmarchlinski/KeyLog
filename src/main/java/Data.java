@@ -10,15 +10,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 class Data {
 
-    Data(String log) throws IOException, ExecutionException, InterruptedException {
+    Data(String log) throws IOException {
         Upload(log);
     }
 
-    private static void Upload(String log) throws IOException, ExecutionException, InterruptedException {
+    private static void Upload(String log) throws IOException {
 
         // Access database
         FirebaseOptions options = new FirebaseOptions.Builder()
@@ -34,5 +33,6 @@ class Data {
         data.put("log", log);
         String hex = String.format("%x", (int) (Math.random() * 2147483647));
         ApiFuture<WriteResult> result = db.collection("user").document("data").update(hex, data);
+        System.out.println(result);
     }
 }

